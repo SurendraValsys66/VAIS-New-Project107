@@ -801,16 +801,65 @@ export default function WishlistProspectDetails() {
           <Card className="shadow-sm">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  aria-label="Columns"
-                >
-                  <Settings2 className="w-4 h-4" />
-                </Button>
+                <div className="flex items-center space-x-4">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        aria-label="Columns"
+                      >
+                        <Settings2 className="w-4 h-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-56">
+                      <div className="p-2">
+                        <h4 className="text-sm font-medium mb-3">Columns</h4>
+                        <div className="space-y-2">
+                          {columns.map((column) => (
+                            <div
+                              key={column.key}
+                              className="flex items-center justify-between py-2"
+                            >
+                              <div className="flex items-center space-x-2">
+                                <div className="w-4 h-4 flex items-center justify-center">
+                                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                                </div>
+                                <label
+                                  htmlFor={`column-${column.key}`}
+                                  className="text-sm font-medium cursor-pointer"
+                                >
+                                  {column.label}
+                                </label>
+                              </div>
+                              <Switch
+                                id={`column-${column.key}`}
+                                checked={
+                                  columnVisibility[
+                                    column.key as keyof typeof columnVisibility
+                                  ]
+                                }
+                                onCheckedChange={() =>
+                                  toggleColumn(
+                                    column.key as keyof typeof columnVisibility,
+                                  )
+                                }
+                                className="data-[state=checked]:bg-valasys-orange"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+                <div className="text-sm text-gray-500">
+                  Total Prospects:{" "}
+                  <span className="font-medium">{filteredData.length}</span>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
@@ -820,10 +869,105 @@ export default function WishlistProspectDetails() {
                     className="pl-10"
                   />
                 </div>
+
+                <Select
+                  value={filters.jobFunction || "all"}
+                  onValueChange={(value) =>
+                    setFilters({
+                      ...filters,
+                      jobFunction: value === "all" ? "" : value,
+                    })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Job Function" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Functions</SelectItem>
+                    <SelectItem value="Engineering">Engineering</SelectItem>
+                    <SelectItem value="Product">Product</SelectItem>
+                    <SelectItem value="Sales">Sales</SelectItem>
+                    <SelectItem value="Marketing">Marketing</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <Select
+                  value={filters.jobLevel || "all"}
+                  onValueChange={(value) =>
+                    setFilters({
+                      ...filters,
+                      jobLevel: value === "all" ? "" : value,
+                    })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Job Level" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Levels</SelectItem>
+                    <SelectItem value="C-Level">C-Level</SelectItem>
+                    <SelectItem value="VP">VP</SelectItem>
+                    <SelectItem value="Director">Director</SelectItem>
+                    <SelectItem value="Manager">Manager</SelectItem>
+                    <SelectItem value="Senior">Senior</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <Select
+                  value={filters.revenue || "all"}
+                  onValueChange={(value) =>
+                    setFilters({
+                      ...filters,
+                      revenue: value === "all" ? "" : value,
+                    })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Revenue" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Revenues</SelectItem>
+                    {revenueOptions.map((r) => (
+                      <SelectItem key={r} value={r}>
+                        {r}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Select
+                  value={filters.country || "all"}
+                  onValueChange={(value) =>
+                    setFilters({
+                      ...filters,
+                      country: value === "all" ? "" : value,
+                    })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Countries</SelectItem>
+                    <SelectItem value="USA">USA</SelectItem>
+                    <SelectItem value="Germany">Germany</SelectItem>
+                    <SelectItem value="France">France</SelectItem>
+                  </SelectContent>
+                </Select>
+
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
-                      onClick={() => setSearchTerm("")}
+                      onClick={() =>
+                        setFilters({
+                          jobFunction: "",
+                          jobLevel: "",
+                          company: "",
+                          country: "",
+                          revenue: "",
+                          engagementRange: { min: 0, max: 100 },
+                        })
+                      }
                       variant="outline"
                       size="icon"
                       aria-label="Reset filters"
