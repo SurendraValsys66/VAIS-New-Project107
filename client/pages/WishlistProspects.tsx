@@ -348,9 +348,9 @@ export default function WishlistProspects() {
                   <TableHeader>
                     <TableRow className="bg-gray-50 hover:bg-gray-50">
                       <TableHead className="w-1/3">Name of List</TableHead>
-                      <TableHead className="w-1/4">No of Records</TableHead>
-                      <TableHead className="w-1/4">Created Date</TableHead>
-                      <TableHead className="w-16 text-right pr-6">
+                      <TableHead className="w-1/5">No of Records</TableHead>
+                      <TableHead className="w-1/5">Created Date</TableHead>
+                      <TableHead className="w-1/4 text-right pr-6">
                         Actions
                       </TableHead>
                     </TableRow>
