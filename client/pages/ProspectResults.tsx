@@ -597,6 +597,22 @@ export default function ProspectResults() {
     }
   });
 
+  // Lists state
+  const [lists, setLists] = useState<ProspectList[]>(() => {
+    try {
+      const raw = localStorage.getItem("prospect:lists");
+      return raw ? (JSON.parse(raw) as ProspectList[]) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [addToListDialog, setAddToListDialog] = useState({
+    open: false,
+    prospectId: "",
+    prospectName: "",
+  });
+
   useEffect(() => {
     try {
       localStorage.setItem("prospect:favorites", JSON.stringify(favorites));
@@ -605,17 +621,40 @@ export default function ProspectResults() {
     } catch {}
   }, [favorites]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem("prospect:lists", JSON.stringify(lists));
+    } catch {}
+  }, [lists]);
+
   const isFavorite = (id: string) => favorites.includes(id);
-  const toggleFavorite = (id: string, name?: string) => {
-    setFavorites((prev) => {
-      const exists = prev.includes(id);
-      const next = exists ? prev.filter((x) => x !== id) : [...prev, id];
-      toast({
-        title: exists ? "Removed from favorites" : "Added to favorites",
-        description: name ? `${name}` : undefined,
-      });
-      return next;
+
+  const handleAddToList = (prospectId: string, prospectName: string) => {
+    setAddToListDialog({
+      open: true,
+      prospectId,
+      prospectName,
     });
+  };
+
+  const handleListCreated = (newList: ProspectList) => {
+    setLists((prev) => [...prev, newList]);
+  };
+
+  const handleProspectAdded = (listId: string, prospectId: string) => {
+    setLists((prev) =>
+      prev.map((list) => {
+        if (list.id === listId && !list.prospects.includes(prospectId)) {
+          return { ...list, prospects: [...list.prospects, prospectId] };
+        }
+        return list;
+      })
+    );
+  };
+
+  const toggleFavorite = (id: string, name?: string) => {
+    // Changed to open dialog instead of directly adding to favorites
+    handleAddToList(id, name || "");
   };
 
   const handleCopy = (value: string, label?: string) => {
