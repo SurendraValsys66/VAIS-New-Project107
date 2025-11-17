@@ -25,6 +25,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CancelSubscriptionModal from "@/components/auth/CancelSubscriptionModal";
 import {
   Settings as SettingsIcon,
   User,
