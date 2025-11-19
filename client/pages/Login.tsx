@@ -781,7 +781,7 @@ export default function Login() {
 
           {/* Bottom Section - Partnerships & Trust */}
           <div
-            className={`mt-6 pt-5 border-t border-white/20 transform transition-all duration-700 ease-out ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+            className={`mt-6 pt-4 border-t border-white/20 transform transition-all duration-700 ease-out ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
             style={{ transitionDelay: "300ms" }}
           >
             {/* Compact Partners Section */}
@@ -792,9 +792,7 @@ export default function Login() {
                   Trusted Partners
                 </p>
               </div>
-              <div className="scale-85 origin-top-left">
-                <AssociationPartners />
-              </div>
+              <AssociationPartners />
             </div>
 
             {/* Trust Badges - Inline */}
