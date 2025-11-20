@@ -242,12 +242,12 @@ export function AddPaymentMethodDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl overflow-hidden">
+      <DialogContent className="max-w-lg w-full mx-2 overflow-y-auto max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">
+          <DialogTitle className="text-xl md:text-2xl font-bold bg-gradient-to-r from-valasys-orange to-valasys-orange-light bg-clip-text text-transparent">
             Add Payment Method
           </DialogTitle>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-xs md:text-sm text-gray-600 mt-2">
             Choose your preferred payment method to get started
           </p>
         </DialogHeader>
