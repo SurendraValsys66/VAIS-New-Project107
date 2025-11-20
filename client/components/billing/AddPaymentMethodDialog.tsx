@@ -253,38 +253,38 @@ export function AddPaymentMethodDialog({
         </DialogHeader>
 
         <div className="space-y-6 mt-6">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2 md:gap-3">
             <button
               onClick={() => {
                 setPaymentType("card");
                 setErrors([]);
               }}
-              className={`group relative p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`group relative p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
                 paymentType === "card"
-                  ? "border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg"
+                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg"
                   : "border-gray-200 hover:border-gray-300 hover:shadow-md"
               }`}
             >
-              <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-2 md:gap-3">
                 <div
-                  className={`p-3 rounded-xl transition-all transform ${
+                  className={`p-2 md:p-3 rounded-xl transition-all transform ${
                     paymentType === "card"
-                      ? "bg-blue-500 text-white scale-110 shadow-lg"
+                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white scale-110 shadow-lg"
                       : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
                   }`}
                 >
-                  <CreditCard className="w-6 h-6" />
+                  <CreditCard className="w-5 md:w-6 h-5 md:h-6" />
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-gray-900">Card</p>
+                  <p className="font-bold text-gray-900 text-sm md:text-base">Card</p>
                   <p className="text-xs text-gray-500 mt-1">
-                    Visa, Mastercard, Amex
+                    Visa, Mastercard
                   </p>
                 </div>
               </div>
               {paymentType === "card" && (
-                <div className="absolute -top-2 -right-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-1.5 shadow-lg animate-bounce">
-                  <Check className="w-4 h-4 text-white" />
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 md:p-1.5 shadow-lg animate-bounce">
+                  <Check className="w-3 md:w-4 h-3 md:h-4 text-white" />
                 </div>
               )}
             </button>
@@ -294,22 +294,22 @@ export function AddPaymentMethodDialog({
                 setPaymentType("paypal");
                 setErrors([]);
               }}
-              className={`group relative p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`group relative p-3 md:p-5 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105 ${
                 paymentType === "paypal"
-                  ? "border-blue-700 bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg"
+                  ? "border-valasys-orange bg-gradient-to-br from-orange-50 to-orange-100 shadow-lg"
                   : "border-gray-200 hover:border-gray-300 hover:shadow-md"
               }`}
             >
-              <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-2 md:gap-3">
                 <div
-                  className={`p-3 rounded-xl transition-all transform ${
+                  className={`p-2 md:p-3 rounded-xl transition-all transform ${
                     paymentType === "paypal"
-                      ? "bg-blue-600 text-white scale-110 shadow-lg"
+                      ? "bg-gradient-to-r from-valasys-orange to-valasys-orange-light text-white scale-110 shadow-lg"
                       : "bg-gray-100 text-gray-600 group-hover:bg-gray-200"
                   }`}
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 md:w-6 h-5 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -317,15 +317,15 @@ export function AddPaymentMethodDialog({
                   </svg>
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-gray-900">PayPal</p>
+                  <p className="font-bold text-gray-900 text-sm md:text-base">PayPal</p>
                   <p className="text-xs text-gray-500 mt-1">
-                    Fast and secure
+                    Fast & secure
                   </p>
                 </div>
               </div>
               {paymentType === "paypal" && (
-                <div className="absolute -top-2 -right-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full p-1.5 shadow-lg animate-bounce">
-                  <Check className="w-4 h-4 text-white" />
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-valasys-orange to-valasys-orange-light rounded-full p-1 md:p-1.5 shadow-lg animate-bounce">
+                  <Check className="w-3 md:w-4 h-3 md:h-4 text-white" />
                 </div>
               )}
             </button>
