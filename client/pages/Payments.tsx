@@ -32,6 +32,7 @@ import {
   Plus,
   Wifi,
   Shield,
+  Landmark,
 } from "lucide-react";
 import {
   AlertDialog,
