@@ -43,6 +43,8 @@ const ratingEmojis = [
 export function FeedbackModal({ open, onOpenChange }: FeedbackModalProps) {
   const [rating, setRating] = useState<number | null>(3);
   const [comment, setComment] = useState("");
+  const [hoveredRating, setHoveredRating] = useState<number | null>(null);
+  const gifRefs = useRef<Record<number, HTMLImageElement | null>>({});
 
   const handleSendFeedback = () => {
     if (!rating || !comment.trim()) {
