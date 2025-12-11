@@ -76,6 +76,12 @@ export function VAISFeedbackModal({
               ?
             </p>
 
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Your feedback helps us improve our service.
+              <br />
+              Please share your thoughts and suggestions below.
+            </p>
+
             {/* 1-10 Rating Scale */}
             <div className="flex justify-center gap-1.5 py-6">
               {ratingColors.map(({ num, color }) => (
