@@ -119,6 +119,11 @@ export function createDynamicContentBlock(
     placeholder: `[${fieldName}]`,
     backgroundColor: "#f5f5f5",
     padding: 12,
+    margin: 0,
+    borderWidth: 0,
+    borderColor: "#000000",
+    borderRadius: 0,
+    visibility: "all",
   };
 }
 
