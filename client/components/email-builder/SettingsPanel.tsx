@@ -102,16 +102,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         );
       case "text":
         return (
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
-              <Label htmlFor="content">Content</Label>
+              <Label htmlFor="content" className="text-xs font-semibold text-gray-700 mb-2 block">Content</Label>
               <textarea
                 id="content"
                 value={block.content}
                 onChange={(e) =>
                   onBlockUpdate({ ...block, content: e.target.value })
                 }
-                className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                 rows={4}
               />
             </div>
@@ -192,9 +192,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         );
       case "image":
         return (
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
-              <Label htmlFor="width">Width (px)</Label>
+              <Label htmlFor="width" className="text-xs font-semibold text-gray-700 mb-2 block">Width (px)</Label>
               <Input
                 id="width"
                 type="number"
@@ -202,6 +202,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 onChange={(e) =>
                   onBlockUpdate({ ...block, width: parseInt(e.target.value) })
                 }
+                className="focus:ring-valasys-orange focus:ring-2"
               />
             </div>
             <div>
@@ -240,15 +241,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         );
       case "button":
         return (
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
-              <Label htmlFor="btnText">Button Text</Label>
+              <Label htmlFor="btnText" className="text-xs font-semibold text-gray-700 mb-2 block">Button Text</Label>
               <Input
                 id="btnText"
                 value={block.text}
                 onChange={(e) =>
                   onBlockUpdate({ ...block, text: e.target.value })
                 }
+                className="focus:ring-valasys-orange focus:ring-2"
               />
             </div>
             <div>
