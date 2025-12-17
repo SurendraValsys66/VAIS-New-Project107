@@ -2597,41 +2597,15 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               <Label className="text-xs font-semibold text-gray-700 mb-2 block">
                 Content
               </Label>
-              <p className="text-xs text-gray-600 mb-2">
-                Edit HTML directly. You can also double-click content in preview to edit inline.
-              </p>
-              <div className="relative">
-                <div className="absolute left-0 top-0 bottom-0 bg-gray-100 border-r border-gray-300 w-10 flex items-start pt-2">
-                  <div className="w-full text-right pr-2">
-                    <span className="text-xs text-gray-500">1</span>
-                  </div>
-                </div>
-                <textarea
-                  id="htmlContent"
-                  value={block.content}
-                  onChange={(e) =>
-                    onBlockUpdate({ ...block, content: e.target.value })
-                  }
-                  className="w-full border border-gray-300 rounded pl-12 pr-2 py-2 text-xs font-mono resize-none focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
-                  rows={8}
-                  placeholder="<div>Your HTML here</div>"
-                  style={{ lineHeight: "1.5" }}
-                />
-                <button
-                  className="absolute right-2 top-2 text-xs text-valasys-orange font-semibold hover:text-valasys-orange"
-                  onClick={() => {
-                    const textarea = document.getElementById(
-                      "htmlContent",
-                    ) as HTMLTextAreaElement;
-                    if (textarea) {
-                      textarea.style.height = "auto";
-                      textarea.style.height = textarea.scrollHeight + "px";
-                    }
-                  }}
-                >
-                  Expand
-                </button>
-              </div>
+              <textarea
+                value={block.content}
+                onChange={(e) =>
+                  onBlockUpdate({ ...block, content: e.target.value })
+                }
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
+                rows={4}
+                placeholder="Edit your content here..."
+              />
             </div>
 
             <div>
