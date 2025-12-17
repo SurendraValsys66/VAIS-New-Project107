@@ -1747,7 +1747,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               <h4 className="text-xs font-bold text-gray-900 mb-3">Link</h4>
               <div className="space-y-3">
                 <div>
-                  <Label htmlFor="btnLinkType" className="text-xs text-gray-700 mb-1 block">
+                  <Label
+                    htmlFor="btnLinkType"
+                    className="text-xs text-gray-700 mb-1 block"
+                  >
                     Type
                   </Label>
                   <select
@@ -1767,7 +1770,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </select>
                 </div>
                 <div>
-                  <Label htmlFor="btnLinkTarget" className="text-xs text-gray-700 mb-1 block">
+                  <Label
+                    htmlFor="btnLinkTarget"
+                    className="text-xs text-gray-700 mb-1 block"
+                  >
                     Target
                   </Label>
                   <Input
@@ -1781,7 +1787,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   />
                 </div>
                 <div>
-                  <Label htmlFor="btnLinkTooltip" className="text-xs text-gray-700 mb-1 block">
+                  <Label
+                    htmlFor="btnLinkTooltip"
+                    className="text-xs text-gray-700 mb-1 block"
+                  >
                     Tooltip
                   </Label>
                   <Input
@@ -1795,7 +1804,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   />
                 </div>
                 <div>
-                  <Label htmlFor="btnLink" className="text-xs text-gray-700 mb-1 block">
+                  <Label
+                    htmlFor="btnLink"
+                    className="text-xs text-gray-700 mb-1 block"
+                  >
                     URL
                   </Label>
                   <Input
@@ -1811,7 +1823,12 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 <button
                   className="text-xs text-valasys-orange font-semibold hover:text-valasys-orange"
                   onClick={() =>
-                    onBlockUpdate({ ...block, link: "", linkTarget: "", linkTooltip: "" })
+                    onBlockUpdate({
+                      ...block,
+                      link: "",
+                      linkTarget: "",
+                      linkTooltip: "",
+                    })
                   }
                 >
                   Remove link
@@ -2210,9 +2227,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             </div>
 
             <div>
-              <h4 className="text-xs font-bold text-gray-900 mb-3">
-                Show on
-              </h4>
+              <h4 className="text-xs font-bold text-gray-900 mb-3">Show on</h4>
               <p className="text-xs text-gray-500 mb-3">
                 Display content based on the type of device or other specific
                 conditions
@@ -2602,7 +2617,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 <button
                   className="absolute right-2 top-2 text-xs text-valasys-orange font-semibold hover:text-valasys-orange"
                   onClick={() => {
-                    const textarea = document.getElementById("htmlContent") as HTMLTextAreaElement;
+                    const textarea = document.getElementById(
+                      "htmlContent",
+                    ) as HTMLTextAreaElement;
                     if (textarea) {
                       textarea.style.height = "auto";
                       textarea.style.height = textarea.scrollHeight + "px";
@@ -2856,9 +2873,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             </div>
 
             <div>
-              <h4 className="text-xs font-bold text-gray-900 mb-3">
-                Show on
-              </h4>
+              <h4 className="text-xs font-bold text-gray-900 mb-3">Show on</h4>
               <p className="text-xs text-gray-500 mb-3">
                 Display content based on the type of device or other specific
                 conditions

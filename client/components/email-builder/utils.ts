@@ -20,7 +20,7 @@ import {
 
 export function generateId(): string {
   // Use crypto.randomUUID if available, fallback to timestamp + random
-  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
     return crypto.randomUUID();
   }
   // Fallback: timestamp + multiple random components for better uniqueness
@@ -357,17 +357,26 @@ export function renderBlockToHTML(block: ContentBlock): string {
       return `<div style="text-align: ${block.alignment};"><video width="${block.width}" height="${block.height}" controls poster="${block.thumbnail}" style="max-width: 100%;"><source src="${block.src}" type="video/mp4"></video></div>`;
     case "button": {
       const buttonBlock = block as ButtonBlock;
-      const buttonWidth = buttonBlock.widthUnit === "%"
-        ? `${buttonBlock.width}%`
-        : `${buttonBlock.width}px`;
-      const buttonBorder = buttonBlock.borderWidth > 0
-        ? `border: ${buttonBlock.borderWidth}px solid ${buttonBlock.borderColor};`
-        : "";
+      const buttonWidth =
+        buttonBlock.widthUnit === "%"
+          ? `${buttonBlock.width}%`
+          : `${buttonBlock.width}px`;
+      const buttonBorder =
+        buttonBlock.borderWidth > 0
+          ? `border: ${buttonBlock.borderWidth}px solid ${buttonBlock.borderColor};`
+          : "";
       const buttonAlignment =
-        buttonBlock.alignment === "left" ? "flex-start" :
-        buttonBlock.alignment === "right" ? "flex-end" : "center";
-      const target = buttonBlock.linkTarget ? `target="${buttonBlock.linkTarget}"` : "";
-      const title = buttonBlock.linkTooltip ? `title="${buttonBlock.linkTooltip}"` : "";
+        buttonBlock.alignment === "left"
+          ? "flex-start"
+          : buttonBlock.alignment === "right"
+            ? "flex-end"
+            : "center";
+      const target = buttonBlock.linkTarget
+        ? `target="${buttonBlock.linkTarget}"`
+        : "";
+      const title = buttonBlock.linkTooltip
+        ? `title="${buttonBlock.linkTooltip}"`
+        : "";
       return `<div style="display: flex; justify-content: ${buttonAlignment}; margin: ${buttonBlock.margin}px;"><a href="${buttonBlock.link}" ${target} ${title} style="background-color: ${buttonBlock.backgroundColor}; color: ${buttonBlock.textColor}; padding: ${buttonBlock.padding}px 20px; border-radius: ${buttonBlock.borderRadius}px; text-decoration: none; display: inline-block; text-align: center; font-size: ${buttonBlock.fontSize}px; font-weight: ${buttonBlock.fontWeight}; width: ${buttonWidth}; ${buttonBorder}">${buttonBlock.text}</a></div>`;
     }
     case "dynamicContent":

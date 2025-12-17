@@ -64,7 +64,7 @@ const DraggableBlockButton: React.FC<DraggableBlockProps> = ({ block }) => {
         isDragging: !!monitor.isDragging(),
       }),
     }),
-    [block]
+    [block],
   );
 
   return (
