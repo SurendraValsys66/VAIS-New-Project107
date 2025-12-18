@@ -21,6 +21,12 @@ const getSocialIconColor = (platform: string): string => {
   return colors[platform.toLowerCase()] || "#666666";
 };
 
+const getShapeStyle = (shape: string, size: number): string => {
+  if (shape === "circle") return "50%";
+  if (shape === "rounded") return "6px";
+  return "2px";
+};
+
 const getSocialIcon = (platform: string, size: number) => {
   const platformLower = platform.toLowerCase();
 
