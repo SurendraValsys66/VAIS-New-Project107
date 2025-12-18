@@ -2880,50 +2880,72 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             )}
 
             {selectedFooterElement === "unsubscribeLink" && (
-              <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-4 pb-3 border-b">
-                  Unsubscribe Link Settings
-                </h4>
-                <div className="space-y-3">
-                  <div>
-                    <Label className="text-xs text-gray-700">Link Text</Label>
-                    <Input
-                      type="text"
-                      value={block.unsubscribeLink.text}
-                      onChange={(e) =>
+              <>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-900 mb-3">Link</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Link Text</Label>
+                      <Input
+                        type="text"
+                        value={block.unsubscribeLink.text}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              text: e.target.value,
+                            },
+                          })
+                        }
+                        className="focus:ring-valasys-orange focus:ring-2"
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Link URL</Label>
+                      <Input
+                        type="url"
+                        value={block.unsubscribeLink.url}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              url: e.target.value,
+                            },
+                          })
+                        }
+                        placeholder="https://example.com"
+                        className="focus:ring-valasys-orange focus:ring-2"
+                      />
+                    </div>
+                    <button
+                      className="text-xs text-valasys-orange font-semibold hover:text-valasys-orange"
+                      onClick={() =>
                         onBlockUpdate({
                           ...block,
                           unsubscribeLink: {
                             ...block.unsubscribeLink,
-                            text: e.target.value,
+                            url: "",
+                            text: "",
                           },
                         })
                       }
-                      className="focus:ring-valasys-orange focus:ring-2"
-                    />
+                    >
+                      Remove link
+                    </button>
                   </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">Link URL</Label>
-                    <Input
-                      type="url"
-                      value={block.unsubscribeLink.url}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            url: e.target.value,
-                          },
-                        })
-                      }
-                      placeholder="https://"
-                      className="focus:ring-valasys-orange focus:ring-2"
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">
-                      Font Size (px)
-                    </Label>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="text-xs font-bold text-gray-900 mb-3">
+                    Typography
+                  </h4>
+                  <div className="space-y-3">
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">
+                        Font Size (px)
+                      </Label>
                     <Input
                       type="number"
                       value={block.unsubscribeLink.fontSize}
@@ -2939,101 +2961,102 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       className="focus:ring-valasys-orange focus:ring-2"
                     />
                   </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">Font Weight</Label>
-                    <select
-                      value={block.unsubscribeLink.fontWeight}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            fontWeight: e.target.value as any,
-                          },
-                        })
-                      }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-                    >
-                      <option value="normal">Normal</option>
-                      <option value="bold">Bold</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">Font Style</Label>
-                    <select
-                      value={block.unsubscribeLink.fontStyle}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            fontStyle: e.target.value as any,
-                          },
-                        })
-                      }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-                    >
-                      <option value="normal">Normal</option>
-                      <option value="italic">Italic</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">Font Family</Label>
-                    <Input
-                      type="text"
-                      value={block.unsubscribeLink.fontFamily}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            fontFamily: e.target.value,
-                          },
-                        })
-                      }
-                      placeholder="Arial, sans-serif"
-                      className="focus:ring-valasys-orange focus:ring-2"
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">Font Color</Label>
-                    <Input
-                      type="color"
-                      value={block.unsubscribeLink.fontColor}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            fontColor: e.target.value,
-                          },
-                        })
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs text-gray-700">
-                      Text Decoration
-                    </Label>
-                    <select
-                      value={block.unsubscribeLink.textDecoration}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          unsubscribeLink: {
-                            ...block.unsubscribeLink,
-                            textDecoration: e.target.value as any,
-                          },
-                        })
-                      }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-                    >
-                      <option value="none">None</option>
-                      <option value="underline">Underline</option>
-                    </select>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Font Weight</Label>
+                      <select
+                        value={block.unsubscribeLink.fontWeight}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              fontWeight: e.target.value as any,
+                            },
+                          })
+                        }
+                        className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+                      >
+                        <option value="normal">Normal</option>
+                        <option value="bold">Bold</option>
+                      </select>
+                    </div>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Font Style</Label>
+                      <select
+                        value={block.unsubscribeLink.fontStyle}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              fontStyle: e.target.value as any,
+                            },
+                          })
+                        }
+                        className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+                      >
+                        <option value="normal">Normal</option>
+                        <option value="italic">Italic</option>
+                      </select>
+                    </div>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Font Family</Label>
+                      <Input
+                        type="text"
+                        value={block.unsubscribeLink.fontFamily}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              fontFamily: e.target.value,
+                            },
+                          })
+                        }
+                        placeholder="Arial, sans-serif"
+                        className="focus:ring-valasys-orange focus:ring-2"
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">Font Color</Label>
+                      <Input
+                        type="color"
+                        value={block.unsubscribeLink.fontColor}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              fontColor: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs text-gray-700 mb-1 block">
+                        Text Decoration
+                      </Label>
+                      <select
+                        value={block.unsubscribeLink.textDecoration}
+                        onChange={(e) =>
+                          onBlockUpdate({
+                            ...block,
+                            unsubscribeLink: {
+                              ...block.unsubscribeLink,
+                              textDecoration: e.target.value as any,
+                            },
+                          })
+                        }
+                        className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
+                      >
+                        <option value="none">None</option>
+                        <option value="underline">Underline</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         );
