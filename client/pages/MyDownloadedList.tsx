@@ -1654,19 +1654,26 @@ export default function MyDownloadedList() {
 
               <TabsContent value="hubspot">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-                  <Card>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base flex items-center">
-                        <ListChecks className="h-4 w-4 mr-2 text-valasys-orange" />
-                        What you'll do
+                  <Card className="border-l-4 border-l-orange-500 bg-gradient-to-br from-orange-50 to-white">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-sm flex items-center text-orange-900">
+                        <ListChecks className="h-4 w-4 mr-2 text-orange-600 flex-shrink-0" />
+                        <span>What you'll do</span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="text-sm text-gray-700 space-y-2">
-                      <p>Import to HubSpot Contacts or Companies.</p>
-                      <p>
-                        Map Email, Name, Company, Title, and Location fields.
-                      </p>
-                      <p>Enable updates of existing records by Email.</p>
+                      <div className="flex gap-2">
+                        <span className="text-orange-600 font-bold">•</span>
+                        <span>Import to HubSpot Contacts or Companies</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className="text-orange-600 font-bold">•</span>
+                        <span>Map Email, Name, Company, Title, Location</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className="text-orange-600 font-bold">•</span>
+                        <span>Enable updates of existing records by Email</span>
+                      </div>
                     </CardContent>
                   </Card>
 
