@@ -789,16 +789,16 @@ export default function MyDownloadedList() {
                                 <DropdownMenuSeparator className="my-2" />
 
                                 {/* HubSpot Section */}
-                                <div className="px-2">
-                                  <div className="px-2 py-2 rounded-lg bg-orange-50 border border-orange-200 mb-2">
-                                    <div className="flex items-center gap-2">
-                                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#FF7A59] text-white text-xs font-bold">
+                                <div className="px-3 py-2">
+                                  <div className="px-3 py-2.5 rounded-lg bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 mb-3 shadow-sm">
+                                    <div className="flex items-center gap-3">
+                                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF7A59] to-[#E85A38] text-white text-xs font-bold shadow-md">
                                         HS
                                       </span>
-                                      <span className="text-sm font-semibold text-orange-900">HubSpot</span>
+                                      <span className="text-sm font-bold text-orange-900 tracking-tight">HubSpot</span>
                                     </div>
                                   </div>
-                                  <div className="space-y-1 mb-2">
+                                  <div className="space-y-1.5 mb-2.5">
                                     {hubspotAccounts.length === 0 ? (
                                       <div className="px-2 py-2 text-xs text-gray-500 italic">
                                         No accounts connected
@@ -847,9 +847,9 @@ export default function MyDownloadedList() {
                                       setHsAddOpen(true);
                                     }}
                                   >
-                                    <div className="w-full px-3 py-2 rounded-md bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 hover:from-orange-100 hover:to-orange-200 border border-orange-300 hover:border-orange-400 flex items-center justify-center gap-1.5 transition-all cursor-pointer">
-                                      <Plus className="h-3.5 w-3.5" />
-                                      <span className="text-sm font-medium">Add HubSpot Account</span>
+                                    <div className="w-full px-3 py-2.5 rounded-lg bg-gradient-to-r from-orange-100 to-orange-150 text-orange-700 hover:from-orange-200 hover:to-orange-250 border border-orange-400 hover:border-orange-500 flex items-center justify-center gap-2 transition-all cursor-pointer font-medium shadow-sm hover:shadow-md">
+                                      <Plus className="h-4 w-4" />
+                                      <span className="text-sm font-semibold">Add HubSpot Account</span>
                                     </div>
                                   </DropdownMenuItem>
                                 </div>
