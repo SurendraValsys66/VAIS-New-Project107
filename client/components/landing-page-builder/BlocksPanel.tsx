@@ -9,7 +9,7 @@ import {
   MessageCircle,
   Info,
   Mail,
-  Footer,
+  Copyright,
   Minus,
 } from "lucide-react";
 import {
