@@ -45,6 +45,7 @@ const sectionTemplates: SectionTemplate[] = [
         <div className="w-full h-16 bg-gray-100 rounded-lg"></div>
       </div>
     ),
+    blocks: createMeetFramerTemplate,
   },
   {
     id: "template-2",
@@ -66,6 +67,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createMeetFramerWithButtonsTemplate,
   },
   {
     id: "template-3",
@@ -89,6 +91,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createLogoTemplate,
   },
   {
     id: "template-4",
@@ -110,6 +113,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createInfiniteCanvasTemplate,
   },
   {
     id: "template-5",
@@ -137,6 +141,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createInfiniteCanvasTwoColumnTemplate,
   },
   {
     id: "template-6",
@@ -160,6 +165,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createCanvasPublishTemplate,
   },
   {
     id: "template-7",
@@ -187,6 +193,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createThreeColumnTemplate,
   },
   {
     id: "template-8",
@@ -208,6 +215,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createStatisticsTemplate,
   },
   {
     id: "template-9",
@@ -223,6 +231,7 @@ const sectionTemplates: SectionTemplate[] = [
         </div>
       </div>
     ),
+    blocks: createTestimonialTemplate,
   },
   {
     id: "template-pricing",
