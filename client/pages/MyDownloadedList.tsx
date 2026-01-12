@@ -1884,6 +1884,122 @@ export default function MyDownloadedList() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+
+        {/* Send Mail Dialog */}
+        <Dialog open={sendMailDialogOpen} onOpenChange={setSendMailDialogOpen}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>Send File via Email</DialogTitle>
+              <DialogDescription>
+                Share "{mailFile?.fileName}" with a recipient via email
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="space-y-4">
+              {/* Recipient Email */}
+              <div>
+                <Label htmlFor="recipient-email">
+                  Recipient Email <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="recipient-email"
+                  type="email"
+                  value={recipientEmail}
+                  onChange={(e) => setRecipientEmail(e.target.value)}
+                  placeholder="recipient@example.com"
+                  required
+                />
+              </div>
+
+              {/* Email Subject */}
+              <div>
+                <Label htmlFor="mail-subject">
+                  Subject <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="mail-subject"
+                  value={mailSubject}
+                  onChange={(e) => setMailSubject(e.target.value)}
+                  placeholder="Enter email subject"
+                  required
+                />
+              </div>
+
+              {/* Email Body */}
+              <div>
+                <Label htmlFor="mail-body">Message</Label>
+                <textarea
+                  id="mail-body"
+                  value={mailBody}
+                  onChange={(e) => setMailBody(e.target.value)}
+                  placeholder="Add a message (optional)"
+                  className="w-full px-3 py-2 border border-valasys-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent resize-none"
+                  rows={4}
+                />
+              </div>
+
+              {/* File Details */}
+              <div className="rounded-lg bg-blue-50 border border-blue-200 p-3">
+                <div className="flex items-start gap-2">
+                  <FileText className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-blue-900">
+                    <p className="font-medium">File will be sent as attachment</p>
+                    <p className="text-xs mt-1">
+                      {mailFile?.fileName} ({mailFile?.fileSize}) • {mailFile?.dataCount.toLocaleString()} records
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setSendMailDialogOpen(false);
+                  setRecipientEmail("");
+                  setMailSubject("");
+                  setMailBody("");
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                disabled={
+                  isSendingMail ||
+                  !recipientEmail.trim() ||
+                  !mailSubject.trim()
+                }
+                onClick={() => {
+                  setIsSendingMail(true);
+                  setTimeout(() => {
+                    console.log("Email sent to:", recipientEmail);
+                    console.log("Subject:", mailSubject);
+                    console.log("File:", mailFile?.fileName);
+                    setIsSendingMail(false);
+                    setSendMailDialogOpen(false);
+                    setRecipientEmail("");
+                    setMailSubject("");
+                    setMailBody("");
+                  }, 1000);
+                }}
+                className="bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSendingMail ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Mail className="h-4 w-4 mr-2" />
+                    Send Email
+                  </>
+                )}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </DashboardLayout>
   );
