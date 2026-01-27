@@ -53,6 +53,8 @@ interface BlocksPanelProps {
   onAddBlock: (block: ContentBlock) => void;
 }
 
+type TabValue = "blocks" | "sections" | "saved";
+
 interface BlockOption {
   id: string;
   icon: React.ReactNode;
