@@ -238,17 +238,17 @@ ${htmlContent.substring(htmlContent.indexOf('<div style="max-width:'), htmlConte
   return (
     <div className="flex flex-col h-full bg-gray-50">
       {/* Header with Actions */}
-      <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-        <div>
+      <div className="bg-white border-b border-gray-200 p-4 flex items-center gap-4">
+        <div className="flex-1 min-w-0">
           <h2 className="text-lg font-semibold text-gray-800">
             HTML Source Code
           </h2>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-gray-600 mt-1 truncate">
             Complete HTML for: {template.name || "Untitled Template"}
           </p>
         </div>
         <TooltipProvider delayDuration={200}>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <Tooltip open={openTooltip} onOpenChange={setOpenTooltip}>
               <TooltipTrigger asChild>
                 <Button variant="outline" size="sm" onClick={handleCopy}>
