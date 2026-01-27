@@ -401,7 +401,7 @@ export const BlocksPanel: React.FC<BlocksPanelProps> = ({ onAddBlock }) => {
   const [activeTab, setActiveTab] = useState<TabValue>("blocks");
 
   // Load saved tab preference from localStorage
-  React.useEffect(() => {
+  useEffect(() => {
     const savedTab = localStorage.getItem("email-builder-active-tab") as TabValue | null;
     if (savedTab && ["blocks", "sections", "saved"].includes(savedTab)) {
       setActiveTab(savedTab);
