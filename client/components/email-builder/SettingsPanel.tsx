@@ -42,7 +42,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const [marginRight, setMarginRight] = useState(marginValue);
   const [marginBottom, setMarginBottom] = useState(marginValue);
   const [marginLeft, setMarginLeft] = useState(marginValue);
-  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
+  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(
+    null,
+  );
 
   // Initialize selectedCardId when block changes to twoColumnCard
   React.useEffect(() => {
@@ -2374,7 +2376,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               <Label>Logo</Label>
               {headerBlock.logo && (
                 <div className="mb-2 flex items-center gap-2">
-                  <img src={headerBlock.logo} alt="Logo" className="max-h-12 max-w-12" />
+                  <img
+                    src={headerBlock.logo}
+                    alt="Logo"
+                    className="max-h-12 max-w-12"
+                  />
                   <Button
                     variant="outline"
                     size="sm"
@@ -2413,7 +2419,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="number"
                   value={headerBlock.logoWidth}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, logoWidth: parseInt(e.target.value) })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      logoWidth: parseInt(e.target.value),
+                    })
                   }
                 />
               </div>
@@ -2424,7 +2433,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="number"
                   value={headerBlock.logoHeight}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, logoHeight: parseInt(e.target.value) })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      logoHeight: parseInt(e.target.value),
+                    })
                   }
                 />
               </div>
@@ -2452,7 +2464,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="number"
                   value={headerBlock.companyFontSize}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, companyFontSize: parseInt(e.target.value) })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      companyFontSize: parseInt(e.target.value),
+                    })
                   }
                 />
               </div>
@@ -2463,7 +2478,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="color"
                   value={headerBlock.companyFontColor}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, companyFontColor: e.target.value })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      companyFontColor: e.target.value,
+                    })
                   }
                 />
               </div>
@@ -2501,7 +2519,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       variant="outline"
                       size="sm"
                       onClick={() => {
-                        const newLinks = headerBlock.links.filter((_, i) => i !== index);
+                        const newLinks = headerBlock.links.filter(
+                          (_, i) => i !== index,
+                        );
                         onBlockUpdate({ ...headerBlock, links: newLinks });
                       }}
                     >
@@ -2516,7 +2536,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   onClick={() => {
                     onBlockUpdate({
                       ...headerBlock,
-                      links: [...headerBlock.links, { id: generateId(), text: "", url: "" }],
+                      links: [
+                        ...headerBlock.links,
+                        { id: generateId(), text: "", url: "" },
+                      ],
                     });
                   }}
                 >
@@ -2534,7 +2557,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="number"
                   value={headerBlock.linksFontSize}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, linksFontSize: parseInt(e.target.value) })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      linksFontSize: parseInt(e.target.value),
+                    })
                   }
                 />
               </div>
@@ -2545,7 +2571,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   type="color"
                   value={headerBlock.linksFontColor}
                   onChange={(e) =>
-                    onBlockUpdate({ ...headerBlock, linksFontColor: e.target.value })
+                    onBlockUpdate({
+                      ...headerBlock,
+                      linksFontColor: e.target.value,
+                    })
                   }
                 />
               </div>
@@ -2559,7 +2588,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 type="color"
                 value={headerBlock.backgroundColor}
                 onChange={(e) =>
-                  onBlockUpdate({ ...headerBlock, backgroundColor: e.target.value })
+                  onBlockUpdate({
+                    ...headerBlock,
+                    backgroundColor: e.target.value,
+                  })
                 }
               />
             </div>
@@ -2572,7 +2604,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 type="number"
                 value={headerBlock.padding}
                 onChange={(e) =>
-                  onBlockUpdate({ ...headerBlock, padding: parseInt(e.target.value) })
+                  onBlockUpdate({
+                    ...headerBlock,
+                    padding: parseInt(e.target.value),
+                  })
                 }
               />
             </div>
@@ -5823,14 +5858,20 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           type="color"
                           value={selectedFeature.backgroundColor}
                           onChange={(e) =>
-                            handleFeatureUpdate("backgroundColor", e.target.value)
+                            handleFeatureUpdate(
+                              "backgroundColor",
+                              e.target.value,
+                            )
                           }
                           className="w-12 h-10 rounded border border-gray-300 cursor-pointer"
                         />
                         <Input
                           value={selectedFeature.backgroundColor}
                           onChange={(e) =>
-                            handleFeatureUpdate("backgroundColor", e.target.value)
+                            handleFeatureUpdate(
+                              "backgroundColor",
+                              e.target.value,
+                            )
                           }
                           placeholder="#ffffff"
                           className="flex-1 text-xs focus:ring-valasys-orange focus:ring-2"

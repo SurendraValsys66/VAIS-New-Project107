@@ -275,12 +275,16 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
                         setPreviewMode(false);
                         setShowSourceCode(!showSourceCode);
                       }}
-                      className={showSourceCode ? "bg-valasys-orange text-white" : ""}
+                      className={
+                        showSourceCode ? "bg-valasys-orange text-white" : ""
+                      }
                     >
                       <Code className="w-4 h-4" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent className="font-medium">View Source</TooltipContent>
+                  <TooltipContent className="font-medium">
+                    View Source
+                  </TooltipContent>
                 </Tooltip>
 
                 <Tooltip>
@@ -292,12 +296,16 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
                         setShowSourceCode(false);
                         setPreviewMode(!previewMode);
                       }}
-                      className={previewMode ? "bg-valasys-orange text-white" : ""}
+                      className={
+                        previewMode ? "bg-valasys-orange text-white" : ""
+                      }
                     >
                       <Eye className="w-4 h-4" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent className="font-medium">Preview & test</TooltipContent>
+                  <TooltipContent className="font-medium">
+                    Preview & test
+                  </TooltipContent>
                 </Tooltip>
 
                 <Tooltip>
@@ -310,7 +318,9 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
                       <Download className="w-4 h-4" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent className="font-medium">Download HTML</TooltipContent>
+                  <TooltipContent className="font-medium">
+                    Download HTML
+                  </TooltipContent>
                 </Tooltip>
 
                 <Button

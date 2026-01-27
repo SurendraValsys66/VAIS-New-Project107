@@ -992,7 +992,7 @@ export function renderBlockToHTML(block: ContentBlock): string {
               index < headerBlock.links.length - 1
                 ? `<span style="color: ${headerBlock.linksFontColor}; margin: 0 5px;">|</span>`
                 : ""
-            }`
+            }`,
         )
         .join("");
 
