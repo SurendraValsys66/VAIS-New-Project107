@@ -83,8 +83,6 @@ export const SourceCodeView: React.FC<SourceCodeViewProps> = ({ template }) => {
   }, [htmlContent]);
 
   const handleDownloadInlineHTML = () => {
-    setShowDownloadText(true);
-
     // Create pure HTML with inline CSS
     const inlineHTMLContent = `<!DOCTYPE html>
 <html>
@@ -114,7 +112,6 @@ ${htmlContent.substring(htmlContent.indexOf('<div style="max-width:'), htmlConte
     setTimeout(() => {
       setDownloaded(false);
       setOpenDownloadTooltip(false);
-      setShowDownloadText(false);
     }, 2000);
   };
 
