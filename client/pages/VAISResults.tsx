@@ -1820,8 +1820,8 @@ export default function VAISResults() {
       <UnlockIntentSignalModal
         open={unlockModalOpen}
         onOpenChange={setUnlockModalOpen}
-        onUnlockCurrent={handleUnlockCurrent}
-        onUnlockAll={handleUnlockAll}
+        onUnlock={handleUnlock}
+        currentlyClickedBadgeId={currentlyClickedBadgeId || undefined}
       />
     </DashboardLayout>
   );
