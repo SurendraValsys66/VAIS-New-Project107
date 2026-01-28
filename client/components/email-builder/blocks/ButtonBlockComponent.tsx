@@ -10,12 +10,35 @@ export const ButtonBlockComponent: React.FC<ButtonBlockComponentProps> = ({
   block,
   isSelected,
 }) => {
+  const buttonBorder =
+    block.borderWidth > 0
+      ? `${block.borderWidth}px solid ${block.borderColor}`
+      : "none";
+
+  const buttonDisplay =
+    block.alignment === "left"
+      ? "flex"
+      : block.alignment === "right"
+        ? "flex"
+        : "flex";
+
+  const buttonJustify =
+    block.alignment === "left"
+      ? "flex-start"
+      : block.alignment === "right"
+        ? "flex-end"
+        : "center";
+
   return (
     <div
       className={`p-4 transition-all ${
         isSelected ? "ring-2 ring-valasys-orange" : ""
       }`}
-      style={{ textAlign: block.alignment as any }}
+      style={{
+        display: buttonDisplay,
+        justifyContent: buttonJustify,
+        margin: `${block.margin}px`,
+      }}
     >
       <button
         style={{
@@ -23,11 +46,12 @@ export const ButtonBlockComponent: React.FC<ButtonBlockComponentProps> = ({
           color: block.textColor,
           padding: `${block.padding}px 20px`,
           borderRadius: `${block.borderRadius}px`,
-          border: "none",
+          border: buttonBorder,
           cursor: "pointer",
           fontSize: "16px",
           fontWeight: "bold",
         }}
+        title={block.linkTooltip}
         disabled
       >
         {block.text}
