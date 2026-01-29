@@ -71,7 +71,10 @@ const generateChartData = (intentData: IntentSignalData) => {
     const variation = (i / 6) * 0.6; // Progressive increase from week 1 to week 7
     baseData.push({
       week: `week${i + 1}`,
-      compositeScore: Math.max(0, Math.round(compositeBase * (0.2 + variation))),
+      compositeScore: Math.max(
+        0,
+        Math.round(compositeBase * (0.2 + variation)),
+      ),
       deltaScore: Math.max(0, Math.round(deltaBase * (0.2 + variation))),
     });
   }
@@ -242,7 +245,9 @@ export default function IntentSignalModal({
 
             {/* Intent Signal Breakdown Chart */}
             <div>
-              <h4 className="text-sm font-semibold mb-4">Intent Signal Breakdown</h4>
+              <h4 className="text-sm font-semibold mb-4">
+                Intent Signal Breakdown
+              </h4>
               <div className="h-64 border rounded-lg p-4 bg-white">
                 <ChartContainer config={chartConfig}>
                   <LineChart
@@ -317,16 +322,17 @@ export default function IntentSignalModal({
                 {data.relatedTopics.slice(0, 3).map((topic, index) => {
                   // Generate random scores for each topic (can be modified to use actual data)
                   const scores = [65, 63, 58];
-                  const score = scores[index] || Math.floor(Math.random() * 40 + 60);
+                  const score =
+                    scores[index] || Math.floor(Math.random() * 40 + 60);
                   return (
                     <div
                       key={index}
                       className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                     >
-                      <span className="text-sm text-gray-700 font-medium">{topic}</span>
-                      <Badge
-                        className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                      >
+                      <span className="text-sm text-gray-700 font-medium">
+                        {topic}
+                      </span>
+                      <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">
                         {score}
                       </Badge>
                     </div>

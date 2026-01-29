@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import {
-  Building2,
-  MapPin,
-  DollarSign,
-  Target,
-  X,
-} from "lucide-react";
+import { Building2, MapPin, DollarSign, Target, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import IntentSignalModal from "./IntentSignalModal";
 import {
@@ -61,7 +55,10 @@ const generateChartData = (intentData: IntentSignalData) => {
     const variation = (i / 6) * 0.6; // Progressive increase from week 1 to week 7
     baseData.push({
       week: `week${i + 1}`,
-      compositeScore: Math.max(0, Math.round(compositeBase * (0.2 + variation))),
+      compositeScore: Math.max(
+        0,
+        Math.round(compositeBase * (0.2 + variation)),
+      ),
       deltaScore: Math.max(0, Math.round(deltaBase * (0.2 + variation))),
     });
   }
@@ -106,10 +103,7 @@ export default function IntentSignalPopover({
   return (
     <>
       {/* Trigger - Clone and add onClick handler */}
-      <div
-        onClick={() => setIsPanelOpen(true)}
-        className="cursor-pointer"
-      >
+      <div onClick={() => setIsPanelOpen(true)} className="cursor-pointer">
         {children}
       </div>
 
@@ -145,7 +139,9 @@ export default function IntentSignalPopover({
                     <Building2 className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-bold truncate">{data.companyName}</h2>
+                    <h2 className="text-lg font-bold truncate">
+                      {data.companyName}
+                    </h2>
                     <p className="text-xs opacity-85">Intent Signal Analysis</p>
                   </div>
                 </div>
@@ -175,11 +171,15 @@ export default function IntentSignalPopover({
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 text-center">
                   <div className="text-xs opacity-85 mb-0.5">Revenue</div>
-                  <div className="text-xs font-semibold truncate">{data.revenue}</div>
+                  <div className="text-xs font-semibold truncate">
+                    {data.revenue}
+                  </div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 text-center">
                   <div className="text-xs opacity-85 mb-0.5">Location</div>
-                  <div className="text-xs font-semibold truncate">{data.city}</div>
+                  <div className="text-xs font-semibold truncate">
+                    {data.city}
+                  </div>
                 </div>
               </div>
             </div>
@@ -199,7 +199,10 @@ export default function IntentSignalPopover({
                   onClick={handleChartClick}
                   style={{ height: "280px" }}
                 >
-                  <ChartContainer config={chartConfig} className="w-full h-full">
+                  <ChartContainer
+                    config={chartConfig}
+                    className="w-full h-full"
+                  >
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart
                         data={chartData}
@@ -277,7 +280,8 @@ export default function IntentSignalPopover({
                 <div className="space-y-3">
                   {data.relatedTopics.slice(0, 3).map((topic, index) => {
                     const scores = [65, 63, 58];
-                    const score = scores[index] || Math.floor(Math.random() * 40 + 60);
+                    const score =
+                      scores[index] || Math.floor(Math.random() * 40 + 60);
                     return (
                       <div
                         key={index}
@@ -285,7 +289,9 @@ export default function IntentSignalPopover({
                       >
                         <div className="flex items-center space-x-3 flex-1">
                           <div className="w-2 h-2 bg-valasys-orange rounded-full group-hover:scale-125 transition-transform"></div>
-                          <span className="text-sm text-gray-700 font-medium">{topic}</span>
+                          <span className="text-sm text-gray-700 font-medium">
+                            {topic}
+                          </span>
                         </div>
                         <Badge className="bg-yellow-100 text-yellow-800 border border-yellow-200 font-semibold text-xs">
                           {score}
@@ -304,7 +310,10 @@ export default function IntentSignalPopover({
               {/* Footer Info */}
               <div className="border-t border-gray-200 pt-4">
                 <p className="text-xs text-gray-500 text-center">
-                  <span className="text-valasys-orange font-semibold">Tip:</span> Click the chart to view detailed breakdown
+                  <span className="text-valasys-orange font-semibold">
+                    Tip:
+                  </span>{" "}
+                  Click the chart to view detailed breakdown
                 </p>
               </div>
             </div>
