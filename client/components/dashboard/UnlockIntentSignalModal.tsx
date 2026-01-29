@@ -72,40 +72,40 @@ export default function UnlockIntentSignalModal({
       <DialogContent className="sm:max-w-2xl p-0 border-0 rounded-xl overflow-hidden">
         <div className="bg-white">
           {/* Header Section */}
-          <div className="relative bg-gradient-to-r from-slate-50 via-blue-50/30 to-slate-100 px-6 py-5 border-b border-gray-200 overflow-hidden">
+          <div className="relative bg-gradient-to-r from-slate-50 via-blue-50/30 to-slate-100 px-5 py-3.5 border-b border-gray-200 overflow-hidden">
             {/* Decorative elements */}
-            <div className="absolute inset-0 opacity-40">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-valasys-orange/5 rounded-full blur-2xl"></div>
-              <div className="absolute bottom-0 left-1/2 w-32 h-32 bg-blue-400/5 rounded-full blur-3xl"></div>
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-valasys-orange/5 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-1/2 w-24 h-24 bg-blue-400/5 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="relative flex items-start gap-4 justify-between">
-              <div className="flex items-start gap-4 flex-1">
+            <div className="relative flex items-center gap-3 justify-between">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 {/* Icon with glow effect */}
-                <div className="p-3 bg-gradient-to-br from-valasys-orange via-orange-500 to-red-500 rounded-xl flex-shrink-0 shadow-lg shadow-orange-200/40 ring-1 ring-orange-200/50 transform hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="p-2 bg-gradient-to-br from-valasys-orange via-orange-500 to-red-500 rounded-lg flex-shrink-0 shadow-md shadow-orange-200/40 ring-1 ring-orange-200/50 transform hover:scale-105 transition-transform duration-300">
+                  <Zap className="w-4 h-4 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h2 className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-base font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent truncate">
                       Unlock Intent Signals
                     </h2>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-valasys-orange/10 to-orange-500/10 border border-orange-200 rounded-full">
-                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-valasys-orange to-orange-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-orange-700">Premium</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-valasys-orange/10 to-orange-500/10 border border-orange-200 rounded-full flex-shrink-0">
+                      <div className="w-1 h-1 bg-gradient-to-r from-valasys-orange to-orange-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-orange-700 whitespace-nowrap">Premium</span>
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Powered by <span className="font-semibold text-gray-900">Bombora</span> – Access real-time buying intent insights
+                  <p className="text-xs text-gray-600 mt-0.5 truncate">
+                    Powered by <span className="font-semibold text-gray-900">Bombora</span> – Real-time buying intent insights
                   </p>
                 </div>
               </div>
 
-              {/* Decorative stats badge */}
-              <div className="hidden sm:flex items-center gap-2 px-3 py-2 bg-white/60 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm">
+              {/* Compact stats badge */}
+              <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 bg-white/60 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm flex-shrink-0">
                 <div className="text-center">
-                  <div className="text-xs font-bold text-valasys-orange">48K+</div>
-                  <div className="text-xs text-gray-600">Credits</div>
+                  <div className="text-xs font-bold text-valasys-orange leading-tight">48K+</div>
+                  <div className="text-xs text-gray-500 leading-tight">Credits</div>
                 </div>
               </div>
             </div>
