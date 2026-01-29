@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Sparkles, Play } from "lucide-react";
+import { Play } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface UnlockIntentSignalModalProps {
   open: boolean;
@@ -16,25 +17,41 @@ export default function UnlockIntentSignalModal({
   onUnlock,
   currentlyClickedBadgeId,
 }: UnlockIntentSignalModalProps) {
-  const handleUnlock = () => {
-    onUnlock(["all"]);
-    onOpenChange(false);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const unlockOptions = [
+    { id: "current", label: "Unlock Current signal" },
+    { id: "super_strong", label: "Unlock Super strong signals only" },
+    { id: "very_strong", label: "Unlock Very strong Signals only" },
+    { id: "strong", label: "Unlock Strong Signals only" },
+    { id: "all", label: "Unlock All Signals" },
+  ];
+
+  const handleCheckboxChange = (optionId: string, checked: boolean) => {
+    if (checked) {
+      setSelectedOptions([...selectedOptions, optionId]);
+    } else {
+      setSelectedOptions(selectedOptions.filter((id) => id !== optionId));
+    }
   };
 
-  const premiumFeatures = [
-    "Premium Templates",
-    "Context page",
-    "Bulk Runner",
-    "Scheduler",
-    "API",
-  ];
+  const handleUnlock = () => {
+    if (selectedOptions.length > 0) {
+      onUnlock(selectedOptions);
+      onOpenChange(false);
+      setSelectedOptions([]);
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-3xl p-0 border-0 rounded-2xl overflow-hidden bg-white">
+      <DialogContent className="sm:max-w-4xl p-0 border-0 rounded-2xl overflow-hidden bg-white">
         {/* Close Button */}
         <button
-          onClick={() => onOpenChange(false)}
+          onClick={() => {
+            onOpenChange(false);
+            setSelectedOptions([]);
+          }}
           className="absolute top-6 right-6 z-50 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <svg
@@ -52,12 +69,12 @@ export default function UnlockIntentSignalModal({
           </svg>
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-10">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 p-8 md:p-10">
           {/* Left Column - Text and Image */}
           <div className="flex flex-col justify-center space-y-6">
             {/* Main Heading */}
             <div className="space-y-3">
-              <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-3xl font-bold text-gray-900 leading-tight">
                 Unlock the{" "}
                 <span className="text-teal-500">full power</span>
                 <br />
@@ -73,7 +90,7 @@ export default function UnlockIntentSignalModal({
             {/* Device Mockup Image with Video Button */}
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 via-blue-500 to-teal-400 p-1">
               <div className="relative rounded-xl bg-gradient-to-br from-blue-600 to-teal-400 aspect-video flex items-center justify-center overflow-hidden">
-                {/* Placeholder for device mockup - in real scenario, replace with actual image */}
+                {/* Placeholder for device mockup */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-teal-500/20"></div>
 
                 {/* Mock device interface */}
@@ -101,42 +118,49 @@ export default function UnlockIntentSignalModal({
             </div>
           </div>
 
-          {/* Right Column - Features and CTA */}
-          <div className="flex flex-col justify-between space-y-6">
-            {/* Features Section */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-teal-500" />
-                <h3 className="text-xl font-bold text-gray-900">
-                  Unlock premium features
-                </h3>
-              </div>
+          {/* Right Column - Checkboxes and CTA */}
+          <div className="flex flex-col justify-between bg-gray-50 rounded-xl p-6">
+            {/* Checkboxes Section */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-6">
+                Unlock premium features
+              </h3>
 
-              {/* Features List */}
-              <div className="space-y-3">
-                {premiumFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                    <span className="text-gray-700 font-medium">{feature}</span>
+              {/* Checkboxes List */}
+              <div className="space-y-4">
+                {unlockOptions.map((option) => (
+                  <div
+                    key={option.id}
+                    className="flex items-center space-x-3 group"
+                  >
+                    <Checkbox
+                      id={option.id}
+                      checked={selectedOptions.includes(option.id)}
+                      onCheckedChange={(checked) =>
+                        handleCheckboxChange(option.id, checked as boolean)
+                      }
+                      className="w-5 h-5"
+                    />
+                    <label
+                      htmlFor={option.id}
+                      className="text-gray-700 font-medium cursor-pointer group-hover:text-gray-900 transition-colors text-sm"
+                    >
+                      {option.label}
+                    </label>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* CTA Button */}
-            <div className="space-y-4">
+            <div className="mt-8">
               <Button
                 onClick={handleUnlock}
-                className="w-full h-12 bg-white border-2 border-gray-300 text-gray-800 hover:bg-gray-50 font-semibold rounded-lg transition-all duration-200"
+                disabled={selectedOptions.length === 0}
+                className="w-full h-12 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 disabled:from-gray-300 disabled:to-gray-300 text-white font-semibold rounded-lg transition-all duration-200"
               >
-                See pricing
+                Unlock Signal
               </Button>
-
-              {/* Disclaimer */}
-              <p className="text-center text-xs text-gray-500 leading-relaxed">
-                Some plans don't include all features. Review and upgrade to the
-                plan that best fits your needs
-              </p>
             </div>
           </div>
         </div>
