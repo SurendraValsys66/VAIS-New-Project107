@@ -69,24 +69,14 @@ const generateChartData = (intentData: IntentSignalData) => {
   const baseData = [];
   const compositeBase = intentData.compositeScore;
   const deltaBase = intentData.deltaScore;
-  const topicsBase = intentData.matchedTopics;
 
-  for (let i = 0; i < 12; i++) {
-    const variation = (Math.random() - 0.5) * 0.15;
+  // Generate 7 weeks of data
+  for (let i = 0; i < 7; i++) {
+    const variation = (i / 6) * 0.6; // Progressive increase from week 1 to week 7
     baseData.push({
-      month: `Month ${i + 1}`,
-      compositeScore: Math.max(
-        0,
-        Math.round(compositeBase + compositeBase * variation),
-      ),
-      deltaScore: Math.max(
-        0,
-        Math.round(deltaBase + deltaBase * variation * 100) / 100,
-      ),
-      matchedTopics: Math.max(
-        0,
-        Math.round(topicsBase + topicsBase * variation),
-      ),
+      week: `week${i + 1}`,
+      compositeScore: Math.max(0, Math.round(compositeBase * (0.2 + variation))),
+      deltaScore: Math.max(0, Math.round(deltaBase * (0.2 + variation))),
     });
   }
   return baseData;
